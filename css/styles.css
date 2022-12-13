@@ -49,6 +49,8 @@ hr{
 
 }
 .top-container{ background-color:#E4F9FF;
+    position: relative;
+    bottom: 50px;
 
 }
 
