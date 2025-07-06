@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Solutions - Expert Web Development & Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logo-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+        animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .logo-text {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a:hover {
+        color: #667eea;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+        z-index: -1;
+    }
+
+    .hero-content {
+        z-index: 1;
+        max-width: 600px;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+    }
+
+    /* Floating particles */
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Services Section */
+    .services {
+        padding: 100px 0;
+        background: white;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .service-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Reviews Section */
+    .reviews {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .review-container {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .review-card {
+        position: absolute;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.5s ease;
+    }
+
+    .review-card.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .review-card.prev {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .review-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .review-info h4 {
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .review-location {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .stars {
+        color: #ffd700;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .review-text {
+        color: #555;
+        line-height: 1.6;
+        font-style: italic;
+    }
+
+    .review-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(102, 126, 234, 0.3);
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .indicator.active {
+        background: #667eea;
+    }
+
+    /* Contact Section */
+    .contact {
+        padding: 100px 0;
+        background: #333;
+        color: white;
+    }
+
+    .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .contact-info h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .contact-item i {
+        margin-right: 1rem;
+        color: #667eea;
+        font-size: 1.2rem;
+    }
+
+    .contact-form {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Footer */
+    footer {
+        background: #222;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .contact-content {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">W</div>
+                <span class="logo-text">Web Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+```
+<section id="home" class="hero">
+    <div class="particles"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1>Premium Web Solutions</h1>
+            <p>We create stunning websites, powerful web applications, and provide comprehensive programming services that drive your business forward.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Web Design</h3>
+                <p>Creating visually stunning, user-friendly websites that capture your brand essence and engage your audience with modern design principles.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Web Development</h3>
+                <p>Building robust, scalable web applications using cutting-edge technologies and frameworks to deliver exceptional performance.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Mobile Apps</h3>
+                <p>Developing responsive mobile applications that work seamlessly across all devices and platforms for maximum reach.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Performance Optimization</h3>
+                <p>Enhancing your website's speed, SEO, and user experience to drive more traffic and conversions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Custom Programming</h3>
+                <p>Tailored software solutions and programming services to meet your specific business requirements and challenges.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Maintenance & Support</h3>
+                <p>Ongoing support, updates, and maintenance services to keep your digital assets running smoothly and securely.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reviews" class="reviews">
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="review-container">
+            <div class="review-card active" data-review="0">
+                <div class="review-header">
+                    <div class="review-avatar">JD</div>
+                    <div class="review-info">
+                        <h4>John Davidson</h4>
+                        <div class="review-location">New York, USA</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Web Solutions transformed our online presence completely. Their attention to detail and professional approach exceeded our expectations. The website they built has increased our leads by 300%!"</p>
+            </div>
+        </div>
+        <div class="review-indicators"></div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's Work Together</h3>
+                <p>Ready to take your digital presence to the next level? Get in touch with us today and let's discuss how we can help your business grow.</p>
+                <div class="contact-item">
+                    <i>📧</i>
+                    <span>info@websolutions.com</span>
+                </div>
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i>📍</i>
+                    <span>123 Tech Street, Digital City</span>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Web Solutions. All rights reserved. | Crafted with ❤️ for your success</p>
+    </div>
+</footer>
+
+<script>
+    // Reviews data
+    const reviews = [
+        {
+            name: "Adebayo Johnson",
+            location: "Lagos, Nigeria",
+            avatar: "AJ",
+            rating: 5,
+            text: "Outstanding work! Web Solutions created a fantastic e-commerce platform for our business. The design is modern and the functionality is perfect. Our online sales have increased by 400% since launch!"
+        },
+        {
+            name: "Sarah Mitchell",
+            location: "Toronto, Canada",
+            avatar: "SM",
+            rating: 5,
+            text: "Exceptional service and expertise. They took our complex requirements and turned them into a beautiful, functional website. The team was professional throughout the entire project."
+        },
+        {
+            name: "Michael Roberts",
+            location: "New York, USA",
+            avatar: "MR",
+            rating: 5,
+            text: "Web Solutions transformed our online presence completely. Their attention to detail and professional approach exceeded our expectations. The website they built has increased our leads by 300%!"
+        },
+        {
+            name: "Klaus Mueller",
+            location: "Berlin, Germany",
+            avatar: "KM",
+            rating: 5,
+            text: "Incredible team! They developed a custom web application that perfectly handles our inventory management. Great technical skills and excellent communication throughout the project."
+        },
+        {
+            name: "James Wilson",
+            location: "London, UK",
+            avatar: "JW",
+            rating: 5,
+            text: "Professional, creative, and reliable. Web Solutions helped us launch our fintech platform with advanced security features. The user interface is intuitive and performs flawlessly."
+        },
+        {
+            name: "Chiamaka Okafor",
+            location: "Abuja, Nigeria",
+            avatar: "CO",
+            rating: 5,
+            text: "Amazing work on our educational platform! They created a user-friendly learning management system that our students love. Fast loading times and mobile responsive design."
+        },
+        {
+            name: "David Kim",
+            location: "Vancouver, Canada",
+            avatar: "DK",
+            rating: 5,
+            text: "Top-notch programming skills and creative design. They solved complex technical challenges that other agencies couldn't handle. Our web app now handles thousands of users daily."
+        },
+        {
+            name: "Jennifer Martinez",
+            location: "Los Angeles, USA",
+            avatar: "JM",
+            rating: 5,
+            text: "Outstanding development team! They built our healthcare portal from scratch with advanced features and seamless user experience. HIPAA compliant and extremely secure."
+        },
+        {
+            name: "Thomas Schneider",
+            location: "Munich, Germany",
+            avatar: "TS",
+            rating: 5,
+            text: "Excellent service and beautiful designs. They transformed our manufacturing company's website into a modern, engaging platform that showcases our capabilities perfectly."
+        },
+        {
+            name: "Emma Thompson",
+            location: "Manchester, UK",
+            avatar: "ET",
+            rating: 5,
+            text: "Web Solutions exceeded all our expectations. Fast delivery, excellent communication, and the final product is simply amazing. Our booking system works flawlessly!"
+        },
+        {
+            name: "Emeka Nwosu",
+            location: "Port Harcourt, Nigeria",
+            avatar: "EN",
+            rating: 5,
+            text: "They created a custom CRM system that revolutionized our oil and gas operations. Excellent programming skills and user-friendly interface design. Highly recommend!"
+        },
+        {
+            name: "Lisa Chen",
+            location: "Calgary, Canada",
+            avatar: "LC",
+            rating: 5,
+            text: "Fantastic experience working with Web Solutions! They created a stunning real estate website that showcases our properties beautifully. Great attention to detail!"
+        },
+        {
+            name: "Robert Johnson",
+            location: "Chicago, USA",
+            avatar: "RJ",
+            rating: 5,
+            text: "Professional team with great expertise. They delivered a complex logistics web application that handles our supply chain management perfectly. No downtime since launch!"
+        },
+        {
+            name: "Andrea Wagner",
+            location: "Hamburg, Germany",
+            avatar: "AW",
+            rating: 5,
+            text: "They built an incredible e-learning platform for our company. Clean code, modern design, and excellent performance. Our employee training has become much more efficient."
+        },
+        {
+            name: "Oliver Davis",
+            location: "Birmingham, UK",
+            avatar: "OD",
+            rating: 5,
+            text: "Amazing team! They redesigned our entire web presence and improved our online conversions by 250%. The SEO optimization has boosted our visibility significantly."
+        },
+        {
+            name: "Kemi Adeleke",
+            location: "Ibadan, Nigeria",
+            avatar: "KA",
+            rating: 5,
+            text: "Web Solutions delivered beyond our expectations. They created a beautiful fashion e-commerce site that's fast, secure, and perfectly optimized. Our sales have tripled!"
+        },
+        {
+            name: "Mark Thompson",
+            location: "Montreal, Canada",
+            avatar: "MT",
+            rating: 5,
+            text: "Outstanding mobile app development! They created a bilingual app for our delivery service that our customers love. Great project management and technical expertise."
+        },
+        {
+            name: "Ashley Rodriguez",
+            location: "Miami, USA",
+            avatar: "AR",
+            rating: 5,
+            text: "Exceptional work on our restaurant chain website! Online ordering system works perfectly, and the design is stunning. Customer engagement has increased dramatically."
+        },
+        {
+            name: "Stefan Richter",
+            location: "Frankfurt, Germany",
+            avatar: "SR",
+            rating: 5,
+            text: "They developed a sophisticated financial dashboard that integrates with multiple banking APIs. Excellent security implementation and real-time data visualization."
+        },
+        {
+            name: "Sophie Clarke",
+            location: "Edinburgh, UK",
+            avatar: "SC",
+            rating: 5,
+            text: "Incredible results! They built our travel booking platform with advanced search filters and payment integration. The user experience is seamless and intuitive."
+        },
+        {
+            name: "Tunde Bakare",
+            location: "Kano, Nigeria",
+            avatar: "TB",
+            rating: 5,
+            text: "Professional service from start to finish. They created an agricultural marketplace that connects farmers with buyers. The platform has transformed our local economy!"
+        },
+        {
+            name: "Rachel Green",
+            location: "Ottawa, Canada",
+            avatar: "RG",
+            rating: 5,
+            text: "Web Solutions created a government portal that serves thousands of citizens daily. Excellent accessibility features and multilingual support. Outstanding work!"
+        },
+        {
+            name: "Daniel Wilson",
+            location: "Seattle, USA",
+            avatar: "DW",
+            rating: 5,
+            text: "They built our tech startup's MVP with cutting-edge features. Clean architecture, scalable design, and excellent performance. Our investors were thoroughly impressed!"
+        },
+        {
+            name: "Lena Fischer",
+            location: "Cologne, Germany",
+            avatar: "LF",
+            rating: 5,
+            text: "Amazing web development services! They created a automotive parts catalog with advanced search and inventory management. The system handles millions of products efficiently."
+        },
+        {
+            name: "Grace Okonkwo",
+            location: "Enugu, Nigeria",
+            avatar: "GO",
+            rating: 5,
+            text: "Excellent work on our healthcare clinic website! Patient booking system, telemedicine features, and beautiful design. They truly understood our requirements and delivered perfectly."
+        }
+    ];
+
+    // Review rotation functionality
+    let currentReview = 0;
+    const reviewContainer = document.querySelector('.review-container');
+    const indicatorsContainer = document.querySelector('.review-indicators');
+
+    // Create indicators
+    reviews.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = `indicator ${index === 0 ? 'active' : ''}`;
+        indicator.addEventListener('click', () => showReview(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    function showReview(index) {
+        // Remove existing review card
+        const existingCard = reviewContainer.querySelector('.review-card');
+        if (existingCard) {
+            existingCard.remove();
+        }
+
+        // Create new review card
+        const review = reviews[index];
+        const card = document.createElement('div');
+        card.className = 'review-card active';
+        card.innerHTML = `
+            <div class="review-header">
+                <div class="review-avatar">${review.avatar}</div>
+                <div class="review-info">
+                    <h4>${review.name}</h4>
+                    <div class="review-location">${review.location}</div>
+                </div>
+            </div>
+            <div class="stars">${'★'.repeat(review.rating)}</div>
+            <p class="review-text">"${review.text}"</p>
+        `;
+        
+        reviewContainer.appendChild(card);
+
+        // Update indicators
+        document.querySelectorAll('.indicator').forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+
+        currentReview = index;
+    }
+
+    // Auto-rotate reviews
+    setInterval(() => {
+        currentReview = (currentReview + 1) % reviews.length;
+        showReview(currentReview);
+    }, 5000);
+
+    // Floating particles
+    function createParticles() {
+        const particlesContainer = document.querySelector('.particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    });
+
+    // Initialize
+    createParticles();
+    showReview(0);
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
+    });
+</script>
+```
+
+</body>
+</html>
